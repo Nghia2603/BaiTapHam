@@ -119,106 +119,70 @@
                             </form>
                         </div>
 
-                        <!-- Bài 3 -->
+                    <!-- Bài 3 -->
                         <div class="tab-pane fade" id="bai3" role="tabpanel" aria-labelledby="v-pills-home-tab">
                             <h4 class="card--heading">💰 Tính thuế thu nhập cá nhân</h4>
-                            <div class="callout callout-info">
-                                <p>💡<b>Gợi ý:</b> </p>
-                                <details>
-                                    <summary>Mở rộng để xem thêm</summary>                                    
-                                    <ul>
-                                        <li>Tổng thu nhập năm các bạn tự nhập thêm. Giả sử 1 tháng thu nhập 10tr thì 1 năm sẽ là 10 x 12 = 120tr => các bạn sẽ nhập 120000000
-                                        </li>
-                                        <li>
-                                            Demo hiện tại đang tính % thuế theo điều kiện mà thu nhập chịu thuế rơi vào. Vd: thu nhập chịu thuế là 110tr thì tính 10% của 110tr => 110tr * 0.1
-                                        </li>
-                                        <li>
-                                            Do đề bài không ghi rõ yêu cầu tính thuế nên cũng có thể tính theo cách chia ra từng đoạn thuế giống bài tính tiền grab. Vd: 110tr => 60tr *0.05 + (110tr-60tr) * 0.1
-                                        </li>
-                                        <li>Sử dụng input có type number thì khi nhập 120000000, có thể nhập ngắn gọn thành 120e+6
-                                        </li>
-                                        <li>Đối với các con số hàng triệu có nhiều số 0, có thể viết ngắn gọn trong code như sau:<br>
-                                            4tr => 4000000 => 4e+6
-                                        </li>
-                                        <li>
-                                            Dùng NumberFormat để số tiền hiển thị đẹp hơn:
-                                            <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/NumberFormat" target="_blank">NumberFormat</a>
-                                        </li>
-                                       
-                                    </ul>
-                                </details>
-                            </div>
+                           <!-- Nhập họ tên -->
                             <form class="row gy-3 align-items-center px-2">
                                 <div class="col-12 col-lg-4">
-                                    <input type="text" class="form-control form__input" id="inputName2"
+                                    <input type="text" class="form-control form__input" id="nhap-ten"
                                         placeholder="Nhập họ tên">
                                 </div>
+                                <!-- Nhập tổng thu nhập năm -->
                                 <div class="col-12 col-lg-4">
-                                    <input type="number" class="form-control form__input" id="inputSalary"
+                                    <input type="number" class="form-control form__input" id="nhap-luong-nam"
                                         placeholder="Tổng thu nhập năm">
                                 </div>
+                                <!-- Nhập số người phụ thuộc -->
                                 <div class="col-12 col-lg-4">
-                                    <input type="number" class="form-control form__input" id="inputUser"
+                                    <input type="number" class="form-control form__input" id="so-nguoi"
                                         placeholder="Số người phụ thuộc">
                                 </div>
-
-
+                                <!-- Nút tính thuế -->
                                 <div class="col-12">
-                                    <button class="btn btn--primary me-1 mb-1" type="button" id="btnTax">Tính tiền
+                                    <button class="btn btn--primary me-1 mb-1" type="button" id="btn-tinhThue">Tính tiền
                                         thuế</button>
                                 </div>
                                 <div class="alert alert-success" role="alert">
-                                    👉<span id="txtTax"></span>
+                                    👉<span id="txt-thue"></span>
                                 </div>
                             </form>
                         </div>
+
+                    <!-- Bài 4 -->
                         <div class="tab-pane fade" id="bai4" role="tabpanel" aria-labelledby="v-pills-home-tab">
                             <h4 class="card--heading">🕸️ Tính tiền cáp</h4>
-                            <div class="callout callout-info">
-                                <p>💡<b>Gợi ý:</b> </p>
-                                <details>
-                                    <summary>Mở rộng để xem thêm</summary>
-                                    <ul>
-                                        <li>Sử dụng event onchange của dropdown để xử lý ẩn hiện cho ô nhập số kết nối khi chọn loại khách hàng:
-                                            <a href="https://www.w3schools.com/jsref/event_onchange.asp" target="_blank">Onchange</a>
-                                        </li>
-                                        <li>
-                                            Đối với loại khách hàng Doanh Nghiệp, tổng 10 kết nối đầu là 75$ <br>
-                                            => đây là giá trọn gói, nếu doanh nghiệp lắp đặt số kết nối nhỏ hơn 10 thì vẫn phải đóng 75$.<br> Vd: 6 kết nối thì vẫn sẽ cộng 75$ vào tổng tiền.<br>
-                                            => Nếu lắp trên 10 kết nối thì kết nối thứ 11 trở đi sẽ tính 5$/kết nối.
-                                        </li>
-                                    </ul>
-                                </details>
-                            </div>
                             <form class="row gy-3 align-items-center px-2">                                 
                                   <div class="col-12  col-lg-4">
-                                    <select class="form-control form__input" name="" id="selCustomer" onchange="disableInput()">
+                                <!-- Chọn loại khách hàng -->
+                                    <select class="form-control form__input" name="" id="loai-KH" onchange="disableInput()">
                                         <option value="">Chọn loại khách hàng</option>
                                         <option value="user">Nhà Dân</option>
                                         <option value="company">Doanh Nghiệp</option>                                      
                                     </select>
-                                </div>     
+                                </div>   
+                                <!-- Nhập mã KH -->
                                 <div class="col-12 col-lg-4">
-                                    <input type="text" class="form-control form__input" id="inputID"
+                                    <input type="text" class="form-control form__input" id="ma-KH"
                                         placeholder="Nhập mã khách hàng">
                                 </div>
+                                <!-- Nhập số kênh cao cấp -->
                                 <div class="col-12 col-lg-4">
-                                    <input type="number" class="form-control form__input" id="inputChanel"
+                                    <input type="number" class="form-control form__input" id="nhap-kenh"
                                         placeholder="Số kênh cao cấp">
                                 </div>
+                                <!-- Số kết nối -->
                                 <div class="col-12 col-lg-4">
-                                    <input type="number" style="display: none;" class="form-control form__input" id="inputConnect"
+                                    <input type="number" style="display: none;" class="form-control form__input" id="so-ketNoi"
                                         placeholder="Số kết nối">
                                 </div>
                                
-
-
                                 <div class="col-12">
-                                    <button class="btn btn--primary me-1 mb-1" type="button" id="btnNet">Tính tiền
+                                    <button class="btn btn--primary me-1 mb-1" type="button" id="btn-tinhTien">Tính tiền
                                         cáp</button>
                                 </div>
                                 <div class="alert alert-success" role="alert">
-                                    👉<span id="txtNet"></span>
+                                    👉<span id="txt-KQ-tinhTienCap"></span>
                                 </div>
                             </form>
                         </div>
